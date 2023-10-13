@@ -2,7 +2,7 @@
 
 Konfiguracja tymczasowego zihera na kurs prowadzenia dokumentacji finansowej jednostki
 
-![Konspekt zajęć](https://docs.google.com/document/d/1X_55ngUEHz5iI_FA83G1FY6zEiWFX4IwK6Q68MG7cyQ/edit)
+[Konspekt zajęć](https://docs.google.com/document/d/1X_55ngUEHz5iI_FA83G1FY6zEiWFX4IwK6Q68MG7cyQ/edit)
 
 ## Uruchamianie
 
