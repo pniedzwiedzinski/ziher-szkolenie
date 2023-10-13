@@ -12,3 +12,5 @@ Wymagany `docker` zainstalowany
 docker compose up
 ```
 
+Następnie otwórz zihera przez http://0.0.0.0:3000/szkolenie
+
