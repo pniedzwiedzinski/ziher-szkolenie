@@ -1,0 +1,44 @@
+version: '3'
+
+volumes:
+  postgres:
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:10
+    ports:
+      - "5432:5432"
+    volumes:
+     - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ziher:
+    image: ziher/app:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - RAILS_RELATIVE_URL_ROOT=/szkolenie
+      - ZIHER_APP_NAME=SzKoLeNiE
+      - ZIHER_DB_HOST=postgres
+      - ZIHER_DB_NAME=ziher_szkolenie
+      - ZIHER_DB_USERNAME=postgres
+      - ZIHER_DB_PASSWORD=postgres
+      - SECRET_KEY_BASE=poznanczyk
+    links:
+      - postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    entrypoint: /ziher/entrypoint.sh
+    volumes:
+      - ./entrypoint.sh:/ziher/entrypoint.sh
+
